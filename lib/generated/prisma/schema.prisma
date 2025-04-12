@@ -31,13 +31,14 @@ model Student {
 model Courses {
   id          String    @id @default(uuid())
   name        String?
+  description String?
   duration    String?
   completion  String?
-  isCompleted Boolean
+  isCompleted Boolean   @default(false)
   studentId   String
   student     Student   @relation(fields: [studentId], references: [id])
   educatorId  String
-  enrolled    Int
+  enrolled    Int?
   educator    Educators @relation(fields: [educatorId], references: [id])
 }
 

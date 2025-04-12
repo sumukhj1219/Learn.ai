@@ -19,7 +19,6 @@ export async function POST(request:NextRequest) {
         if(!age || !dob || !intrest || !goal || !srn){
             return NextResponse.json({message:"All fields are required"}, {status:405})
         }
-
         
         await prisma.student.upsert({
             where:{

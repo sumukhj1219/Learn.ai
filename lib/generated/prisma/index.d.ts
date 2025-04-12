@@ -2308,6 +2308,7 @@ export namespace Prisma {
   export type CoursesMinAggregateOutputType = {
     id: string | null
     name: string | null
+    description: string | null
     duration: string | null
     completion: string | null
     isCompleted: boolean | null
@@ -2319,6 +2320,7 @@ export namespace Prisma {
   export type CoursesMaxAggregateOutputType = {
     id: string | null
     name: string | null
+    description: string | null
     duration: string | null
     completion: string | null
     isCompleted: boolean | null
@@ -2330,6 +2332,7 @@ export namespace Prisma {
   export type CoursesCountAggregateOutputType = {
     id: number
     name: number
+    description: number
     duration: number
     completion: number
     isCompleted: number
@@ -2351,6 +2354,7 @@ export namespace Prisma {
   export type CoursesMinAggregateInputType = {
     id?: true
     name?: true
+    description?: true
     duration?: true
     completion?: true
     isCompleted?: true
@@ -2362,6 +2366,7 @@ export namespace Prisma {
   export type CoursesMaxAggregateInputType = {
     id?: true
     name?: true
+    description?: true
     duration?: true
     completion?: true
     isCompleted?: true
@@ -2373,6 +2378,7 @@ export namespace Prisma {
   export type CoursesCountAggregateInputType = {
     id?: true
     name?: true
+    description?: true
     duration?: true
     completion?: true
     isCompleted?: true
@@ -2471,12 +2477,13 @@ export namespace Prisma {
   export type CoursesGroupByOutputType = {
     id: string
     name: string | null
+    description: string | null
     duration: string | null
     completion: string | null
     isCompleted: boolean
     studentId: string
     educatorId: string
-    enrolled: number
+    enrolled: number | null
     _count: CoursesCountAggregateOutputType | null
     _avg: CoursesAvgAggregateOutputType | null
     _sum: CoursesSumAggregateOutputType | null
@@ -2501,6 +2508,7 @@ export namespace Prisma {
   export type CoursesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    description?: boolean
     duration?: boolean
     completion?: boolean
     isCompleted?: boolean
@@ -2514,6 +2522,7 @@ export namespace Prisma {
   export type CoursesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    description?: boolean
     duration?: boolean
     completion?: boolean
     isCompleted?: boolean
@@ -2527,6 +2536,7 @@ export namespace Prisma {
   export type CoursesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    description?: boolean
     duration?: boolean
     completion?: boolean
     isCompleted?: boolean
@@ -2540,6 +2550,7 @@ export namespace Prisma {
   export type CoursesSelectScalar = {
     id?: boolean
     name?: boolean
+    description?: boolean
     duration?: boolean
     completion?: boolean
     isCompleted?: boolean
@@ -2548,7 +2559,7 @@ export namespace Prisma {
     enrolled?: boolean
   }
 
-  export type CoursesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "duration" | "completion" | "isCompleted" | "studentId" | "educatorId" | "enrolled", ExtArgs["result"]["courses"]>
+  export type CoursesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "duration" | "completion" | "isCompleted" | "studentId" | "educatorId" | "enrolled", ExtArgs["result"]["courses"]>
   export type CoursesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     student?: boolean | StudentDefaultArgs<ExtArgs>
     educator?: boolean | EducatorsDefaultArgs<ExtArgs>
@@ -2571,12 +2582,13 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string | null
+      description: string | null
       duration: string | null
       completion: string | null
       isCompleted: boolean
       studentId: string
       educatorId: string
-      enrolled: number
+      enrolled: number | null
     }, ExtArgs["result"]["courses"]>
     composites: {}
   }
@@ -3004,6 +3016,7 @@ export namespace Prisma {
   interface CoursesFieldRefs {
     readonly id: FieldRef<"Courses", 'String'>
     readonly name: FieldRef<"Courses", 'String'>
+    readonly description: FieldRef<"Courses", 'String'>
     readonly duration: FieldRef<"Courses", 'String'>
     readonly completion: FieldRef<"Courses", 'String'>
     readonly isCompleted: FieldRef<"Courses", 'Boolean'>
@@ -4501,6 +4514,7 @@ export namespace Prisma {
   export const CoursesScalarFieldEnum: {
     id: 'id',
     name: 'name',
+    description: 'description',
     duration: 'duration',
     completion: 'completion',
     isCompleted: 'isCompleted',
@@ -4690,12 +4704,13 @@ export namespace Prisma {
     NOT?: CoursesWhereInput | CoursesWhereInput[]
     id?: StringFilter<"Courses"> | string
     name?: StringNullableFilter<"Courses"> | string | null
+    description?: StringNullableFilter<"Courses"> | string | null
     duration?: StringNullableFilter<"Courses"> | string | null
     completion?: StringNullableFilter<"Courses"> | string | null
     isCompleted?: BoolFilter<"Courses"> | boolean
     studentId?: StringFilter<"Courses"> | string
     educatorId?: StringFilter<"Courses"> | string
-    enrolled?: IntFilter<"Courses"> | number
+    enrolled?: IntNullableFilter<"Courses"> | number | null
     student?: XOR<StudentScalarRelationFilter, StudentWhereInput>
     educator?: XOR<EducatorsScalarRelationFilter, EducatorsWhereInput>
   }
@@ -4703,12 +4718,13 @@ export namespace Prisma {
   export type CoursesOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
     duration?: SortOrderInput | SortOrder
     completion?: SortOrderInput | SortOrder
     isCompleted?: SortOrder
     studentId?: SortOrder
     educatorId?: SortOrder
-    enrolled?: SortOrder
+    enrolled?: SortOrderInput | SortOrder
     student?: StudentOrderByWithRelationInput
     educator?: EducatorsOrderByWithRelationInput
   }
@@ -4719,12 +4735,13 @@ export namespace Prisma {
     OR?: CoursesWhereInput[]
     NOT?: CoursesWhereInput | CoursesWhereInput[]
     name?: StringNullableFilter<"Courses"> | string | null
+    description?: StringNullableFilter<"Courses"> | string | null
     duration?: StringNullableFilter<"Courses"> | string | null
     completion?: StringNullableFilter<"Courses"> | string | null
     isCompleted?: BoolFilter<"Courses"> | boolean
     studentId?: StringFilter<"Courses"> | string
     educatorId?: StringFilter<"Courses"> | string
-    enrolled?: IntFilter<"Courses"> | number
+    enrolled?: IntNullableFilter<"Courses"> | number | null
     student?: XOR<StudentScalarRelationFilter, StudentWhereInput>
     educator?: XOR<EducatorsScalarRelationFilter, EducatorsWhereInput>
   }, "id">
@@ -4732,12 +4749,13 @@ export namespace Prisma {
   export type CoursesOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
     duration?: SortOrderInput | SortOrder
     completion?: SortOrderInput | SortOrder
     isCompleted?: SortOrder
     studentId?: SortOrder
     educatorId?: SortOrder
-    enrolled?: SortOrder
+    enrolled?: SortOrderInput | SortOrder
     _count?: CoursesCountOrderByAggregateInput
     _avg?: CoursesAvgOrderByAggregateInput
     _max?: CoursesMaxOrderByAggregateInput
@@ -4751,12 +4769,13 @@ export namespace Prisma {
     NOT?: CoursesScalarWhereWithAggregatesInput | CoursesScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Courses"> | string
     name?: StringNullableWithAggregatesFilter<"Courses"> | string | null
+    description?: StringNullableWithAggregatesFilter<"Courses"> | string | null
     duration?: StringNullableWithAggregatesFilter<"Courses"> | string | null
     completion?: StringNullableWithAggregatesFilter<"Courses"> | string | null
     isCompleted?: BoolWithAggregatesFilter<"Courses"> | boolean
     studentId?: StringWithAggregatesFilter<"Courses"> | string
     educatorId?: StringWithAggregatesFilter<"Courses"> | string
-    enrolled?: IntWithAggregatesFilter<"Courses"> | number
+    enrolled?: IntNullableWithAggregatesFilter<"Courses"> | number | null
   }
 
   export type EducatorsWhereInput = {
@@ -4902,10 +4921,11 @@ export namespace Prisma {
   export type CoursesCreateInput = {
     id?: string
     name?: string | null
+    description?: string | null
     duration?: string | null
     completion?: string | null
-    isCompleted: boolean
-    enrolled: number
+    isCompleted?: boolean
+    enrolled?: number | null
     student: StudentCreateNestedOneWithoutCoursesInput
     educator: EducatorsCreateNestedOneWithoutCoursesInput
   }
@@ -4913,21 +4933,23 @@ export namespace Prisma {
   export type CoursesUncheckedCreateInput = {
     id?: string
     name?: string | null
+    description?: string | null
     duration?: string | null
     completion?: string | null
-    isCompleted: boolean
+    isCompleted?: boolean
     studentId: string
     educatorId: string
-    enrolled: number
+    enrolled?: number | null
   }
 
   export type CoursesUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     duration?: NullableStringFieldUpdateOperationsInput | string | null
     completion?: NullableStringFieldUpdateOperationsInput | string | null
     isCompleted?: BoolFieldUpdateOperationsInput | boolean
-    enrolled?: IntFieldUpdateOperationsInput | number
+    enrolled?: NullableIntFieldUpdateOperationsInput | number | null
     student?: StudentUpdateOneRequiredWithoutCoursesNestedInput
     educator?: EducatorsUpdateOneRequiredWithoutCoursesNestedInput
   }
@@ -4935,43 +4957,47 @@ export namespace Prisma {
   export type CoursesUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     duration?: NullableStringFieldUpdateOperationsInput | string | null
     completion?: NullableStringFieldUpdateOperationsInput | string | null
     isCompleted?: BoolFieldUpdateOperationsInput | boolean
     studentId?: StringFieldUpdateOperationsInput | string
     educatorId?: StringFieldUpdateOperationsInput | string
-    enrolled?: IntFieldUpdateOperationsInput | number
+    enrolled?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type CoursesCreateManyInput = {
     id?: string
     name?: string | null
+    description?: string | null
     duration?: string | null
     completion?: string | null
-    isCompleted: boolean
+    isCompleted?: boolean
     studentId: string
     educatorId: string
-    enrolled: number
+    enrolled?: number | null
   }
 
   export type CoursesUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     duration?: NullableStringFieldUpdateOperationsInput | string | null
     completion?: NullableStringFieldUpdateOperationsInput | string | null
     isCompleted?: BoolFieldUpdateOperationsInput | boolean
-    enrolled?: IntFieldUpdateOperationsInput | number
+    enrolled?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type CoursesUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     duration?: NullableStringFieldUpdateOperationsInput | string | null
     completion?: NullableStringFieldUpdateOperationsInput | string | null
     isCompleted?: BoolFieldUpdateOperationsInput | boolean
     studentId?: StringFieldUpdateOperationsInput | string
     educatorId?: StringFieldUpdateOperationsInput | string
-    enrolled?: IntFieldUpdateOperationsInput | number
+    enrolled?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type EducatorsCreateInput = {
@@ -5182,17 +5208,6 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
-  }
-
   export type StudentScalarRelationFilter = {
     is?: StudentWhereInput
     isNot?: StudentWhereInput
@@ -5206,6 +5221,7 @@ export namespace Prisma {
   export type CoursesCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    description?: SortOrder
     duration?: SortOrder
     completion?: SortOrder
     isCompleted?: SortOrder
@@ -5221,6 +5237,7 @@ export namespace Prisma {
   export type CoursesMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    description?: SortOrder
     duration?: SortOrder
     completion?: SortOrder
     isCompleted?: SortOrder
@@ -5232,6 +5249,7 @@ export namespace Prisma {
   export type CoursesMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    description?: SortOrder
     duration?: SortOrder
     completion?: SortOrder
     isCompleted?: SortOrder
@@ -5250,22 +5268,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
-  }
-
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type EducatorsCountOrderByAggregateInput = {
@@ -5358,14 +5360,6 @@ export namespace Prisma {
 
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
-  }
-
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type StudentUpdateOneRequiredWithoutCoursesNestedInput = {
@@ -5550,51 +5544,26 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
-  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type NestedFloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
   export type CoursesCreateWithoutStudentInput = {
     id?: string
     name?: string | null
+    description?: string | null
     duration?: string | null
     completion?: string | null
-    isCompleted: boolean
-    enrolled: number
+    isCompleted?: boolean
+    enrolled?: number | null
     educator: EducatorsCreateNestedOneWithoutCoursesInput
   }
 
   export type CoursesUncheckedCreateWithoutStudentInput = {
     id?: string
     name?: string | null
+    description?: string | null
     duration?: string | null
     completion?: string | null
-    isCompleted: boolean
+    isCompleted?: boolean
     educatorId: string
-    enrolled: number
+    enrolled?: number | null
   }
 
   export type CoursesCreateOrConnectWithoutStudentInput = {
@@ -5629,12 +5598,13 @@ export namespace Prisma {
     NOT?: CoursesScalarWhereInput | CoursesScalarWhereInput[]
     id?: StringFilter<"Courses"> | string
     name?: StringNullableFilter<"Courses"> | string | null
+    description?: StringNullableFilter<"Courses"> | string | null
     duration?: StringNullableFilter<"Courses"> | string | null
     completion?: StringNullableFilter<"Courses"> | string | null
     isCompleted?: BoolFilter<"Courses"> | boolean
     studentId?: StringFilter<"Courses"> | string
     educatorId?: StringFilter<"Courses"> | string
-    enrolled?: IntFilter<"Courses"> | number
+    enrolled?: IntNullableFilter<"Courses"> | number | null
   }
 
   export type StudentCreateWithoutCoursesInput = {
@@ -5748,21 +5718,23 @@ export namespace Prisma {
   export type CoursesCreateWithoutEducatorInput = {
     id?: string
     name?: string | null
+    description?: string | null
     duration?: string | null
     completion?: string | null
-    isCompleted: boolean
-    enrolled: number
+    isCompleted?: boolean
+    enrolled?: number | null
     student: StudentCreateNestedOneWithoutCoursesInput
   }
 
   export type CoursesUncheckedCreateWithoutEducatorInput = {
     id?: string
     name?: string | null
+    description?: string | null
     duration?: string | null
     completion?: string | null
-    isCompleted: boolean
+    isCompleted?: boolean
     studentId: string
-    enrolled: number
+    enrolled?: number | null
   }
 
   export type CoursesCreateOrConnectWithoutEducatorInput = {
@@ -5794,81 +5766,89 @@ export namespace Prisma {
   export type CoursesCreateManyStudentInput = {
     id?: string
     name?: string | null
+    description?: string | null
     duration?: string | null
     completion?: string | null
-    isCompleted: boolean
+    isCompleted?: boolean
     educatorId: string
-    enrolled: number
+    enrolled?: number | null
   }
 
   export type CoursesUpdateWithoutStudentInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     duration?: NullableStringFieldUpdateOperationsInput | string | null
     completion?: NullableStringFieldUpdateOperationsInput | string | null
     isCompleted?: BoolFieldUpdateOperationsInput | boolean
-    enrolled?: IntFieldUpdateOperationsInput | number
+    enrolled?: NullableIntFieldUpdateOperationsInput | number | null
     educator?: EducatorsUpdateOneRequiredWithoutCoursesNestedInput
   }
 
   export type CoursesUncheckedUpdateWithoutStudentInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     duration?: NullableStringFieldUpdateOperationsInput | string | null
     completion?: NullableStringFieldUpdateOperationsInput | string | null
     isCompleted?: BoolFieldUpdateOperationsInput | boolean
     educatorId?: StringFieldUpdateOperationsInput | string
-    enrolled?: IntFieldUpdateOperationsInput | number
+    enrolled?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type CoursesUncheckedUpdateManyWithoutStudentInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     duration?: NullableStringFieldUpdateOperationsInput | string | null
     completion?: NullableStringFieldUpdateOperationsInput | string | null
     isCompleted?: BoolFieldUpdateOperationsInput | boolean
     educatorId?: StringFieldUpdateOperationsInput | string
-    enrolled?: IntFieldUpdateOperationsInput | number
+    enrolled?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type CoursesCreateManyEducatorInput = {
     id?: string
     name?: string | null
+    description?: string | null
     duration?: string | null
     completion?: string | null
-    isCompleted: boolean
+    isCompleted?: boolean
     studentId: string
-    enrolled: number
+    enrolled?: number | null
   }
 
   export type CoursesUpdateWithoutEducatorInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     duration?: NullableStringFieldUpdateOperationsInput | string | null
     completion?: NullableStringFieldUpdateOperationsInput | string | null
     isCompleted?: BoolFieldUpdateOperationsInput | boolean
-    enrolled?: IntFieldUpdateOperationsInput | number
+    enrolled?: NullableIntFieldUpdateOperationsInput | number | null
     student?: StudentUpdateOneRequiredWithoutCoursesNestedInput
   }
 
   export type CoursesUncheckedUpdateWithoutEducatorInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     duration?: NullableStringFieldUpdateOperationsInput | string | null
     completion?: NullableStringFieldUpdateOperationsInput | string | null
     isCompleted?: BoolFieldUpdateOperationsInput | boolean
     studentId?: StringFieldUpdateOperationsInput | string
-    enrolled?: IntFieldUpdateOperationsInput | number
+    enrolled?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type CoursesUncheckedUpdateManyWithoutEducatorInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     duration?: NullableStringFieldUpdateOperationsInput | string | null
     completion?: NullableStringFieldUpdateOperationsInput | string | null
     isCompleted?: BoolFieldUpdateOperationsInput | boolean
     studentId?: StringFieldUpdateOperationsInput | string
-    enrolled?: IntFieldUpdateOperationsInput | number
+    enrolled?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
 
